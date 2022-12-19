@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Map, tileLayer } from 'leaflet';
+import { Map, marker, tileLayer } from 'leaflet';
 import './App.css';
 
 function App() {
@@ -7,10 +7,14 @@ function App() {
   const mapInit = useRef<boolean>(false);
 
   const initMap = () => {
-    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    map && tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map!);
+    }).addTo(map);
+  }
+
+  const addMarker = () => {
+    map &&  marker([-33.8678, 151.21]).addTo(map)
   }
   useEffect(() => {
     if (!mapInit.current) {
@@ -24,6 +28,7 @@ function App() {
     }
     if (map) {
       initMap();
+      addMarker();
     }
   }, [mapInit, map ])
   return (
