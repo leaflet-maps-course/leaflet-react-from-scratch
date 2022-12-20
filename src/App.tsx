@@ -59,7 +59,7 @@ function App() {
         marker([location.lat, location.lng])
           .addTo(map)
           .bindPopup(
-            `<b>Hello world!</b><br>Location: LAT: ${location.lat}, LNG: ${location.lng}`
+            `<b>Otros</b><br>Location: LAT: ${location.lat}, LNG: ${location.lng}`
           )
       );
   };
